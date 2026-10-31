@@ -4,7 +4,7 @@ title: '#4471 · what the merge hid'
 owner: support desk
 status: accepted
 reviewed: 2026-10-31
-signature: 'Michał Kwaśniewski'
+signature: 'v1.eyJzdWIiOiIyMTM4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NTI5NTIsImV4cCI6MTc5MzUzOTM1Mn0.qfizXva_f6lope67voI6mxMvTSSxaibC0PfGO4n8jbA'
 ---
 
 <script>
@@ -13,7 +13,7 @@ signature: 'Michał Kwaśniewski'
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const signature = 'Michał Kwaśniewski';
+  const signature = 'v1.eyJzdWIiOiIyMTM4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NTI5NTIsImV4cCI6MTc5MzUzOTM1Mn0.qfizXva_f6lope67voI6mxMvTSSxaibC0PfGO4n8jbA';
 </script>
 
 #4471 was closed as one bug, "dates parse mm/dd in eu locales", with one fix queued. Sorted by
