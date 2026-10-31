@@ -18,7 +18,7 @@ signature: 'Michał Kwaśniewski'
 
 #4471 was closed as one bug, "dates parse mm/dd in eu locales", with one fix queued. Sorted by
 cause, the reports merged into it are two bugs. They break dates at different points on the way from
-the booking form to the calendar, they need different fixes, and only one of them had a ticket.
+the booking form to the calendar, so they need different fixes, and only one of them had a ticket.
 
 <Callout kind="warn">
 The desk merges on the subject line (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Both
@@ -39,6 +39,13 @@ follows the hint and types the month first, and the form then reads that input t
 Nothing is wrong with the shared parser here: the hint asks for one order and the form reads the
 other. The tenants on booking-v3 produce these reports, and only through the form. Same subject
 lines as the bug above, different bug, different fix.
+
+## What the desk did with them
+
+Engineering closed #4471 on 5 October. The parser fix shipped, `fix(dates): parse dd/mm for eu
+locales`. The second bug was closed as won't fix, because booking-v3 is retired: the form that asks
+for one date order and reads the other no longer runs. Both tickets in the repo are closed the same
+way.
 
 ## How the reports were counted
 
