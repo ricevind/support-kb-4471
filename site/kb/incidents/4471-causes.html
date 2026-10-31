@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.CyFHXAy8.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BKBPa74Y.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/izu8FqDr.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CZklZwJ8.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.DTew_t14.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BzF-N377.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Ce-DMLbb.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Dp93BE2Q.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DRUw-Tsm.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/NVnSiPcz.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.DjW6nd8Q.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D0Ijyhdv.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/2.CKrCGMQl.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DJSu4eua.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DQhT1Mj8.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BK2tWL71.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/3xWQpEwl.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CRgIg4e9.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Db6Wok_d.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/Ciqtlhln.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B4e5gRNw.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/6.CGfSyT2a.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · what the merge hid · support kb</title>
+		<link href="../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/6.jOGByT2g.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.GlFZa8QJ.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/7.C3mwiGDj.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.Bt0MwIZg.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/2.BhhgOc_n.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[0--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · what the merge hid</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status accepted svelte-e2jw2j">accepted</span> <span class="svelte-e2jw2j">reviewed 2026-10-31 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><!--[--><p>#4471 was closed as one bug, “dates parse mm/dd in eu locales”, with one fix queued. Sorted by
+cause, the reports merged into it are two bugs. They break dates at different points on the way from
+the booking form to the calendar, they need different fixes, and only one of them had a ticket.</p> <aside class="warn svelte-17bri61"><!---->The desk merges on the subject line (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>). Both
+bugs arrive under the same subjects, so the merge could not see the split, and the smaller bug never
+got a ticket of its own.<!----></aside><!----> <h2>The two problems</h2> <p class="sum svelte-ntfmbp"><strong>427</strong> exported rows · <strong>412</strong> unique ids · <strong>412</strong> merged into #4471 · <strong>2</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/ricevind/support-kb-4471/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/ricevind/support-kb-4471/issues/2">#2</a><!--]--></td></tr><!--]--></tbody></table><!----> <p><strong><code>parser</code></strong> — the shared date parser reads every date month first. A tenant that writes the day
+first gets its dates flipped: 7 April comes out as 4 July. This is what #4471 describes, and it is
+the bug with the queued fix.</p> <p><strong><code>hint</code></strong> — booking-v3 prints <code>MM/DD/YYYY</code> under its date field. A tenant that writes the day first
+follows the hint and types the month first, and the form then reads that input the tenant’s way.
+Nothing is wrong with the shared parser here: the hint asks for one order and the form reads the
+other. The tenants on booking-v3 produce these reports, and only through the form. Same subject
+lines as the bug above, different bug, different fix.</p> <h2>How the reports were counted</h2> <p>The export repeats some rows: the ticket system’s pages overlap, so a report can arrive twice. One
+id is one report, so the count starts from unique ids, not from rows.</p> <p>The cause of a report comes from its tenant, not from what intake tagged it. A tenant has a locale
+and a booking form (<code>src/lib/data/tenants/</code>), and <code>causeOf</code> in <code>src/lib/kb/causes.ts</code> combines those
+with the channel the report came in on. Intake’s <code>meta.intakeTag</code> is a guess taken from the
+reporter’s browser, and it disagrees with the cause for a large share of these reports; the counts
+here ignore it.</p> <p>Reports the desk read as a one-day move stay counted where they were filed, and are footnoted under
+the table below.</p> <h2>What was merged</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <h2>Lessons</h2> <ul><li>A merge on subject lines cannot split a ticket by cause. The cause lives on the tenant and the
+channel, so check it before a ticket is closed as one fix.</li> <li>Two bugs that look alike to the reporter can need two fixes. Count them separately before
+engineering plans the work.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-ZFNJ-DRYF</b></p><!--]--><!----><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_8ny0r9 = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.CyFHXAy8.js"),
+						import("../../_app/immutable/entry/app.DTew_t14.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 6],
+							data: [null,null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
